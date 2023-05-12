@@ -23,9 +23,7 @@ cloudinary.config({
     secure: true
 });
 
-app.get('/',(req,res)=>{
-    res.send('hello express')
-}) 
+
 
 app.use(express.static(path.join(__dirname, './client/build')));
 app.get('*',function(req,res){
