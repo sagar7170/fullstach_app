@@ -7,10 +7,11 @@ const jwt = require('jsonwebtoken');
 const multer = require('multer');
 var cloudinary = require('cloudinary');
 const cors = require('cors');
-const cookie = require('cookie-parser')
-const authentication = require("./authentication")
-
+const cookie = require('cookie-parser');
+const authentication = require("./authentication");
+const path =  require('path');
 const app = express();
+
 app.use(cors({ origin: true, credentials: true }))
 app.use(express.json());
 app.use(cookie());
@@ -197,6 +198,11 @@ app.post('/Contect', authentication, async (req, res) => {
 //     console.log(ans);
 //     res.json({message:"data"})
 // })
+
+app.use(express.static(path.join(__dirname, './client/build')));
+app.get('*',function(req,res){
+    res.sendFile(path.join(__dirname,'./client/build'));
+});
 
 const PORT = process.env.PORT || 4000
 app.listen(PORT)      
