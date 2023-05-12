@@ -12,6 +12,12 @@ const authentication = require("./authentication");
 const path =  require('path');
 const app = express();
 
+
+app.use(express.static(path.join(__dirname, './client/build')));
+app.get('/',function(req,res){
+    res.sendFile(path.join(__dirname,'./client/build/index.html'));
+});
+
 app.use(cors({ origin: true, credentials: true }))
 app.use(express.json());
 app.use(cookie());
@@ -24,10 +30,7 @@ cloudinary.config({
 });
 
   
-app.use(express.static(path.join(__dirname, './client/build')));
-app.get('*',function(req,res){
-    res.sendFile(path.join(__dirname,'./client/build/index.html'));
-});
+
 
 const db = `mongodb+srv://sagar:admin000@cluster0.hbxgpqx.mongodb.net/mernstack?retryWrites=true&w=majority`
 mongoose.connect(db).then(() => {
