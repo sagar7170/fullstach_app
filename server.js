@@ -1,17 +1,17 @@
 const mongoose = require('mongoose');
 const User = require("./User")
 const express = require('express');
-require('dotenv').config();
 // const { response } = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
 var cloudinary = require('cloudinary');
 const cors = require('cors');
-const cookie = require('cookie-parser')
-const authentication = require("./authentication")
- 
+const cookie = require('cookie-parser');
+const authentication = require("./authentication");
+const path =  require('path');
 const app = express();
+
 app.use(cors({ origin: true, credentials: true }))
 app.use(express.json());
 app.use(cookie());
@@ -23,8 +23,7 @@ cloudinary.config({
     secure: true
 });
 
-
-
+  
 app.use(express.static(path.join(__dirname, './client/build')));
 app.get('*',function(req,res){
     res.sendFile(path.join(__dirname,'./client/build/index.html'));
@@ -190,11 +189,13 @@ app.post('/Contect', authentication, async (req, res) => {
     }  
 })
 
-// app.post('/mydata',(req,res)=>{  
+// app.post('/mydata',(req,res)=>{
 //     const ans = User.mydata();
 //     console.log(ans);
 //     res.json({message:"data"})
 // })
 
-const PORT = process.env.PORT || 4000;
-app.listen(PORT)  
+
+
+const PORT = process.env.PORT || 4000
+app.listen(PORT)      
