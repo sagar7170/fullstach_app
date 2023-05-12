@@ -26,7 +26,7 @@ cloudinary.config({
   
 app.use(express.static(path.join(__dirname, './client/build')));
 app.get('*',function(req,res){
-    res.sendFile(path.join(__dirname,'./client/build'));
+    res.sendFile(path.join(__dirname,'./client/build/index.html'));
 });
 
 const db = `mongodb+srv://sagar:admin000@cluster0.hbxgpqx.mongodb.net/mernstack?retryWrites=true&w=majority`
