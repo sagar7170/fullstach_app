@@ -1,0 +1,23 @@
+POST  http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "name": "sagar2",
+    "email": "sagar45@gmail.com",
+    "work": "Home",
+    "phone": "9801801212",
+    "password": "admin000",
+    "cpassword": "admin000"
+}
+
+###
+ 
+POST http://localhost:3000/signIn
+Content-Type: application/json
+
+{
+    "email": "sgrkarotia@gmail.com",
+    "password": "12345"
+} 
+
+
