@@ -31,7 +31,6 @@ cloudinary.config({
 
   
 
-
 const db = `mongodb+srv://sagar:admin000@cluster0.hbxgpqx.mongodb.net/mernstack?retryWrites=true&w=majority`
 mongoose.connect(db).then(() => {
     console.log("connected")
